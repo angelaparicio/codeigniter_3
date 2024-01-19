@@ -126,7 +126,7 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 	 * @param	string	$name		Session cookie name, unused
 	 * @return	bool
 	 */
-	public function open($save_path, $name)
+	public function open($save_path, $name): bool
 	{
 		if (empty($this->_db->conn_id) && ! $this->_db->db_connect())
 		{
@@ -276,7 +276,7 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 	 *
 	 * @return	bool
 	 */
-	public function close()
+	public function close(): bool
 	{
 		return ($this->_lock && ! $this->_release_lock())
 			? $this->_failure
